@@ -1,0 +1,48 @@
+---
+title: "RWorksheet_Pama#4"
+author: "Miko Pama"
+date: "2023-10-25"
+output: pdf_document
+---
+ 
+#Number1
+```{r number1}
+df <- data.frame(
+  ShoeSize =c(6.5, 9.0, 8.5, 8.5, 10.5, 7.0, 9.5, 9.0, 13.0, 7.5,  10.5, 8.5, 12.0, 10.5, 13.0, 11.5, 8.5, 5.0, 10.0, 6.5, 7.5, 8.5, 10.5, 8.5, 10.5, 11.0, 9.0, 13.0),
+  Height = c(66.0, 68.0, 64.5, 65.0, 70.0, 64.0, 70.0, 71.0, 72.0, 64.0, 74.5, 67.0, 71.0, 71.0, 77.0, 72.0, 59.0, 62.0, 72.0, 66.0, 64.0, 67.0, 73.0, 69.0, 72.0, 70.0, 69.0, 70.0),
+  Gender = c("F", "F", "F", "F", "M", "F", "F", "F", "M", "F", "M", "F", "M", "M", "M", "M", "F", "F", "M", "F","F", "M", "M", "F", "M", "M", "M", "M")) 
+df
+```
+#B
+``` {r number1b}
+male_subset <- df[df$Gender == "M", c("ShoeSize", "Height")]
+female_subset <- df[df$Gender == "F", c("ShoeSize", "Height")]
+male_subset
+female_subset
+```
+#C
+``` {r number1c}
+  mean(df$ShoeSize)
+  mean(df$Height)
+```
+#D
+#YES, there is a relationship between the shoe size and height, if an individual is more taller, the longer the size of their shoe.
+
+#Number2
+``` {r number2}
+months <- c("March","April","January","November","January",
+"September","October","September","November","August",
+"January","November","November","February","May","August","July","December","August","August","September","November","February",
+"April")
+factor_months <- factor(months)
+factor_months
+summary(months)
+summary(factor_months)
+```
+#3
+``` {r number3}
+summary(months)
+summary(factor_months)
+```
+
+ 
