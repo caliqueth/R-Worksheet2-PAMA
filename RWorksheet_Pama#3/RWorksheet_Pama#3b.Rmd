@@ -66,7 +66,7 @@ df <- data.frame(
 cat("Structure of the empty dataframe:\n")
 str(df)
 #Output
-The output shows that the data frame has 0 observations (rows) and 5 variables (columns) with their respective data types. The "Factors" column is empty since there are no levels defined yet.
+#The output shows that the data frame has 0 observations (rows) and 5 variables (columns) with their respective data types. The "Factors" column is empty since there are no levels defined yet.
 ```
 #NUMBER 3
 ```{r number3}
@@ -80,16 +80,4 @@ household_data <- data.frame (
 )
 household_data
 write.csv(household_data, file = "HouseholdData.csv", row.names = FALSE)
-```
-#A.
-```{r number3a}
-household_data <- read.csv("HouseholdData.csv")
-```
-#B.
-```{r number3b}
-household_data$Sex <- factor(household_data$Sex)
-household_data$Sex <- as.integer(factor(household_data$Sex, 
-                                 levels = c("Male", "Female"),
-                                    labels = c(1, 2)))
-household_data
 ```
