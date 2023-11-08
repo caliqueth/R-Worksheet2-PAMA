@@ -1,0 +1,67 @@
+---
+title: "Untitled"
+author: "Miko Pama"
+date: "2023-11-08"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#1
+```{r}
+matrixA <- matrix(0, nrow = 5, ncol = 5)
+
+for (i in 1:5) {
+  for (j in 1:5) {
+    matrixA[i, j] <- abs(vectorA[i] - vectorA[j])
+  }
+}
+
+matrixA
+```
+
+#2
+```{r}
+num_rows <- 5
+
+for (i in 1:num_rows) {
+  for (j in 1:i) {
+    cat("* ")
+  }
+  cat("\n")
+}
+```
+
+#3
+```{r number3}
+n <- as.numeric(readline("Enter the starting number for the Fibonacci sequence:"))
+
+
+a <- n
+b <- n
+
+
+cat(a, " ")
+
+
+repeat {
+  c <- a + b
+  if (c > 500) {
+    break
+  }
+  cat(c, " ")
+  a <- b
+  b <- c
+}
+cat("\n")
+
+```
+
+#4
+```{r number4}
+library(readr)
+Shoesize <- read_csv("/cloud/project/RWorksheet4/shoe.csv", show_col_types = FALSE)
+ View (shoe)
+```
