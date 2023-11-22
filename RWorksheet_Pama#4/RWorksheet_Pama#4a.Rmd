@@ -45,5 +45,118 @@ summary(months)
 summary(factor_months)
 ```
 #4
+```{r}
+direction<-c("East","West","North")
+direction
+frequency<-c(1,4,3)
+frequency
 
- 
+factor_direction<-factor(direction,levels=c("East","West","North"))
+print(factor_direction)
+factor_frequency<-factor(frequency,levels=c(1,4,3))
+print(factor_frequency)
+```
+
+#5.
+```{r}
+library(readr)
+import_march<-read.csv(file="import_march.csv")
+import_march
+```
+
+#6.
+```{r}
+num<-readline(prompt="Choose a number from 1 to 50:")
+
+if (num>1 && num<=50){
+  cat("The input number is", num)
+  
+}else if (num==20){
+  print('TRUE')
+}else{
+  print('The number selected is beyond the range of 1 to 50')
+}
+```
+
+#7.
+```{r}
+#a.
+calc_min_bills<-function(){
+ price<-as.integer(readline(prompt="Price of snack(a random number divisible by 50):"))
+
+ if (is.na(price)|| price %% 50 !=0){
+  cat("Invalid.\n")
+return()
+}
+  num_bills<-0
+  bill_denominations<-c(1000,500,200,100,50)
+  
+  for(bill in bill_denominations){
+    num_bills<-num_bills + (price %/% bill)
+    price<-price %% bill
+  }
+  
+cat("Minimum number of bills needed:", num_bills,"\n")
+}
+calc_min_bills()
+```
+
+#8.
+```{r}
+#a.
+Name<-c("Annie","Thea","Steve","Hanna")
+Grade1<-c(85,65,75,95)
+Grade2<-c(65,75,55,75)
+Grade3<-c(85,90,80,100)
+Grade4<-c(100,90,85,90)
+cardDf<-data.frame(Name, Grade1, Grade2, Grade3, Grade4)
+cardDf
+``` 
+#b.
+```{r}
+ student_above_90<-FALSE
+for(j in 1:length(Name)){
+  total_average <- 0
+  count <- 0
+  average_score<-c((Grade1)[j]+(Grade2)[j]+(Grade3)[j]+(Grade4)[j])/4
+if (average_score>90){
+    cat(paste(Name[j], "'s average grade this semester is", round(average_score,2),"\n"))
+student_above_90<-TRUE
+  }
+}
+if(!student_above_90){
+  print("No student have an average of over 90 in the math during the semester")
+}
+``` 
+
+#c.
+```{r num8b}
+for (test_num in 1:4){
+  total_score<-Grade1 + Grade2 + Grade3 + Grade4
+  average_score<-total_score/4
+  if (average_score[test_num]<80){
+    cat("The", test_num, "test was difficult.\n")
+  }
+}
+```
+
+#d.
+```{r num8c}
+for (j in 1:length(Name)){
+  highest_grade<-Grade1[j]
+  
+  if (Grade2[j]>highest_grade){
+    highest_grade<-Grade2[j]
+  }
+  if (Grade3[j]>highest_grade){
+    highest_grade<-Grade3[j]
+  }
+  if (Grade4[j]>highest_grade){
+    highest_grade<-Grade4[j]
+  }
+  
+  if (highest_grade>90){
+    cat(paste(Name[j], "'s highest grade this semester is", highest_grade, ".\n"))
+  }
+}
+```
