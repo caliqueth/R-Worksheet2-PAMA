@@ -1,0 +1,63 @@
+---
+title: "Group 4"
+author: "Miko Pama, Rey-Ann Laguda, Neo Michael Kenneth Espia"
+date: "2023-12-22"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r Reviews}
+
+#install.packages("rvest")
+
+library(rvest)
+url <-"https://www.amazon.com/WHITIN-Insulated-Waterproof-Anti-Slip-invierno/dp/B08CVSLG82/ref=sr_1_2_sspa?qid=1703285296&s=fashion-mens-intl-ship&sr=1-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGZfYnJvd3Nl&psc=1"
+url
+
+scrape <- read_html (url)
+```
+```{r}
+
+scrape_amazon_reviews <- function(url, max_reviews= 300) {
+
+scrape <- read_html(url)
+
+username <- scrape %>%
+
+html_nodes(".a-profile-name") %>%
+
+html_text()
+
+ratings <- scrape %>%
+
+html_nodes (".review-rating") %>%
+
+html_text()
+
+reviews <- scrape %>%
+
+html_nodes(".review-text-content span") %>%
+
+html_text()
+
+# Find the minimum length among the vectors
+
+min_length <- min(length (username), length(ratings), length(reviews))
+
+# Create a data frame only with complete rows 
+
+data <- data.frame(
+Username = username[1:min_length], 
+Ratings = ratings[1:min_length],
+Reviews = reviews[1:min_length]
+)
+
+return(data)
+}
+
+reviews_data <- scrape_amazon_reviews(url, max_reviews = 300)
+reviews_data
+```
